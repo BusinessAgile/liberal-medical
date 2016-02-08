@@ -110,8 +110,8 @@ class MedicalAppointment(orm.Model):
         'patient_id': fields.many2one('medical.patient', string='Patient',
                                       required=True, select=True,
                                       help='Patient Name'),
-        'name': fields.char(size=256, string='Appointment ID', readonly=True),
-        'appointment_date': fields.datetime(string='Date and Time'),
+        'name': fields.char(size=256, string='Appointment ID', readonly=False),
+        'appointment_date': fields.datetime(string='Date and Time', required=True),
         'date_end': fields.datetime(string='do not display'),
         'duration': fields.float('Duration'),
         'physician_id': fields.many2one('medical.physician',
@@ -149,12 +149,13 @@ class MedicalAppointment(orm.Model):
     }
 
     _defaults = {
-        'name': '/',
-        'duration': 30.00,
+        # 'name': '/',
+        'duration': 1.00,
         'urgency': 'a',
         'stage_id': lambda s, cr, uid, c: s._get_default_stage_id(cr, uid, c),
         'user_id': lambda s, cr, u, c: u,
         'appointment_type': 'outpatient',
+        'appointment_date': field.Date.today(),
     }
 
     _group_by_full = {'stage_id': _read_group_stage_ids}
