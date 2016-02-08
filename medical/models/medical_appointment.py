@@ -27,7 +27,7 @@ from openerp.osv import fields, orm
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
-
+from openerp import fields as _fields
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -155,7 +155,7 @@ class MedicalAppointment(orm.Model):
         'stage_id': lambda s, cr, uid, c: s._get_default_stage_id(cr, uid, c),
         'user_id': lambda s, cr, u, c: u,
         'appointment_type': 'outpatient',
-        'appointment_date': field.Date.today(),
+        'appointment_date': _fields.Date.today(),
     }
 
     _group_by_full = {'stage_id': _read_group_stage_ids}
