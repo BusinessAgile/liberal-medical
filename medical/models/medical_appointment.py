@@ -110,7 +110,7 @@ class MedicalAppointment(orm.Model):
         'patient_id': fields.many2one('medical.patient', string='Patient',
                                       required=True, select=True,
                                       help='Patient Name'),
-        'name': fields.char(size=256, string='Appointment ID', readonly=False),
+        'name': fields.char(size=256, string='Appointment ID', readonly=True),
         'appointment_date': fields.datetime(string='Date and Time', required=True),
         'date_end': fields.datetime(string='do not display'),
         'duration': fields.float('Duration'),

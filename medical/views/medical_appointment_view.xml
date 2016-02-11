@@ -174,26 +174,27 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="medical_appointment_view_form" />
         </record>
+       
+        <record model="ir.actions.act_window.view" id="medical_appointment_action_kanban">
+            <field name="act_window_id" ref="medical_appointment_action" />
+            <field name="sequence" eval="30" />
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="medical_appointment_view_kanban" />
+        </record>
 
         <record model="ir.actions.act_window.view" id="medical_appointment_action_tree">
             <field name="act_window_id" ref="medical_appointment_action" />
-            <field name="sequence" eval="30" />
+            <field name="sequence" eval="20" />
             <field name="view_mode">tree</field>
             <field name="view_id" ref="medical_appointment_view_tree" />
         </record>
 
         <record model="ir.actions.act_window.view" id="medical_appointment_action_calendar">
             <field name="act_window_id" ref="medical_appointment_action" />
-            <field name="sequence" eval="20" />
+            <field name="sequence" eval="10" />
             <field name="view_mode">calendar</field>
             <field name="view_id" ref="medical_appointment_view_calendar" />
         </record>
-         <record model="ir.actions.act_window.view" id="medical_appointment_action_kanban">
-             <field name="act_window_id" ref="medical_appointment_action" />
-             <field name="sequence" eval="10" />
-             <field name="view_mode">kanban</field>
-             <field name="view_id" ref="medical_appointment_view_kanban" />
-         </record>
 
     </data>
 </openerp>

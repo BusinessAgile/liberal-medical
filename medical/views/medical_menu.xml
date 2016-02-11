@@ -4,17 +4,6 @@
         <menuitem id="medical_root" name="Medical" sequence="10" />
 
 
-        <!--Menu Patient-->
-
-        <menuitem id="medical_patient_root"
-                  name="Patient"
-                  parent="medical_root"
-                  sequence="10" />
-        <menuitem id="medical_patient"
-                  name=" Patient"
-                  parent="medical_patient_root"
-                  sequence="10"
-                  action="medical_patient_action" />
 
 
         <!--Appointment-->
@@ -30,6 +19,17 @@
                   sequence="10"
                   action="medical_appointment_action" />
 
+        <!--Menu Patient-->
+
+        <menuitem id="medical_patient_root"
+                  name="Patient"
+                  parent="medical_root"
+                  sequence="30" />
+        <menuitem id="medical_patient"
+                  name=" Patient"
+                  parent="medical_patient_root"
+                  sequence="40"
+                  action="medical_patient_action" />
 
 
         <!--Configurations-->
