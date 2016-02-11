@@ -95,24 +95,11 @@ class AppointmentInvoice(models.Model):
             stage_name = stage_proxy.name_get(cr, uid, values['stage_id'],
                                               context=context)[0][1]
             if stage_name == 'Done':
-                # update history and any other for stage_id.onchange....
-                val_history = {
-                    'action': "----  Creating Invoice for   ----",
-                    'appointment_id_history': ids[0],
-                    'name': uid,
-                    'date': time.strftime('%Y-%m-%d %H:%M:%S'),
-                }
-                ait_obj.create(cr, uid, val_history)
-
                 # Get objects 
                 invoice_obj = self.pool.get('account.invoice')
                 appointment_obj = self.pool.get('medical.appointment')
-                # apps = self.pool.get('medical.appointment').browse(cr, uid, appointment)
+
                 apps = appointment
-                # Retrieve current id
-                # apps = context.get('ids')
-                partner_id = appointment
-                _logger.info(apps)
                 pats = []
 
                 for app_id in apps:
@@ -187,7 +174,7 @@ class AppointmentInvoice(models.Model):
                                 appointment.consultations.id] = {
                                 'product_id': appointment.consultations.id,
                                 'name': appointment.consultations.name,
-                                'quantity': 1,
+                                'quantity': appointment.duration,
                                 'account_id': a,
                                 'price_unit': appointment.consultations.lst_price}
                     else:
@@ -206,10 +193,25 @@ class AppointmentInvoice(models.Model):
                                               'price_unit': prod_data['price_unit']}))
 
                 invoice_data['invoice_line'] = product_lines
-                invoice_id = invoice_obj.create(cr, uid, invoice_data)
+                if appointment.validity_status != 'invoiced':
+                    try:
+                        invoice_id = invoice_obj.create(cr, uid, invoice_data)
+                        appointment_obj.write(cr, uid, ids, {'invoice_id': invoice_id, 'validity_status': 'invoiced'})
+                        val_history = {
+                            'action': "----  Creating Invoice for {0}  ----".format(appointment.patient_id.partner_id.name),
+                            'appointment_id_history': ids[0],
+                            'name': uid,
+                            'date': time.strftime('%Y-%m-%d %H:%M:%S'),
+                        }
+                        ait_obj.create(cr, uid, val_history)
+                    except Exception as e:
+                        raise orm.except_orm(
+                            _('UserError'),
+                            _('Appointment cannot be created due to an internal error : ' + e))
 
-                # appointment_obj.write(
-                #     cr, uid, apps, {
-                #         'validity_status': 'invoiced'})
-                           
+                else: 
+                    raise orm.except_orm(
+                            _('UserError'),
+                            _('Appointment already invoiced'))
+                        
         return parent_res
