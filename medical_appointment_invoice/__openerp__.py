@@ -20,7 +20,7 @@
     'version': '0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'medical'],
+    'depends': ['base', 'medical', 'sale', 'account_voucher'],
     
     # "update_xml": [
     #     "views/medical_invoice_view.xml",
