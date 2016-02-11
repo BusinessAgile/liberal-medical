@@ -110,7 +110,7 @@ class MedicalAppointment(orm.Model):
         'patient_id': fields.many2one('medical.patient', string='Patient',
                                       required=True, select=True,
                                       help='Patient Name'),
-        'name': fields.char(size=256, string='Appointment ID', readonly=True),
+        'name': fields.char(size=256, string='Appointment ID', readonly=False),
         'appointment_date': fields.datetime(string='Date and Time', required=True),
         'date_end': fields.datetime(string='do not display'),
         'duration': fields.float('Duration'),
@@ -140,6 +140,7 @@ class MedicalAppointment(orm.Model):
             'medical.specialty', string='Specialty',
             help='Medical Specialty / Sector'
         ),
+        'invoice_id': fields.many2one('account.invoice', string='Related Invoice', readonly=True),
         'stage_id': fields.many2one('medical.appointment.stage', 'Stage',
                                     track_visibility='onchange'),
         'history_ids': fields.one2many('medical.appointment.history',

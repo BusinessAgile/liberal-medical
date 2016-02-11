@@ -9,7 +9,7 @@
                 <tree string="Medical Appointment" colors="grey:stage_id=='Canceled';green:stage_id=='Draft';blue:stage_id in ('Done');red:stage_id in ('Waiting','Unavailable')">
                     <field name="name" />
                     <field name="patient_id" />
-                       <field name="alias" />
+                    <field name="alias" />
                     <field name="appointment_date" />
                     <field name="physician_id" />
                     <field name="appointment_type" />
@@ -28,9 +28,8 @@
             <field name="arch" type="xml">
                 <form string="Medical Appointment"  version="7.0">
                     <header>
-                        <field name="stage_id" widget="statusbar" clickable="True"
-                                options="{'fold_field': 'fold'}"
-                                 />
+                        <field name="stage_id" widget="statusbar" clickable="True" />
+                        <!-- options="{'fold_field': 'fold'}" -->
                     </header>
                     <sheet>
                         <h1>
@@ -53,6 +52,7 @@
                                     </group>
                                     <group>
                                         <field name="consultations" />
+                                        <field name='invoice_id' />
                                         <field name="appointment_date"/>
                                         <field name="duration" widget="float_time"/>
                                     </group>
@@ -144,9 +144,12 @@
                                             <a type="open"><field name="name"/></a>
                                         </h3>
                                         <ul>
-                                            <li t-if="record.patient_id.raw_value"><b>Patient:</b> <field name="patient_id"/></li>
-                                            <li t-if="record.physician_id.raw_value"><b>Physician:</b> <field name="physician_id"/></li>
-                                            <li t-if="record.duration.raw_value"><b>Duration:</b> <field name="duration"/></li>
+                                            <li t-if="record.patient_id.raw_value"><b>Patient:</b> 
+                                            <field name="patient_id"/></li>
+                                            <li t-if="record.physician_id.raw_value"><b>Physician:</b> 
+                                            <field name="physician_id"/></li>
+                                            <li t-if="record.duration.raw_value"><b>Duration:</b> 
+                                            <field name="duration"/></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -156,6 +159,8 @@
                 </kanban>
             </field>
         </record>
+
+
 
         <record model="ir.actions.act_window" id="medical_appointment_action">
             <field name="name">Appointment</field>
