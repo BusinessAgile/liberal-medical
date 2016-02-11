@@ -10,7 +10,7 @@
         This module generate automatic invoice for patient when an appointment is done.
     """,
 
-    'author': "Business Agile",
+    'author': "Business Agile, LasLabs",
     'website': "http://businessagile.eu/",
 
     # Categories can be used to filter modules in modules listing
