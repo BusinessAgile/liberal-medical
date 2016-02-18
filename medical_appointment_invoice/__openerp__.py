@@ -16,14 +16,16 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Medical',
     'version': '0.2',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'medical', 'sale', 'account_voucher'],
     
-    # "update_xml": [
-    #     "views/medical_invoice_view.xml",
-        # "views/appointment_invoice.xml",
-    # ],
+    'data': [
+        'views/medical_patient_view_button.xml',
+    ],
+    'installable': True,
+    'application': False,
+    'auto_install': False,
 }

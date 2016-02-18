@@ -157,6 +157,7 @@ class MedicalAppointment(orm.Model):
         'user_id': lambda s, cr, u, c: u,
         'appointment_type': 'outpatient',
         'appointment_date': _fields.Date.today(),
+        # 'patient_id': lambda s, cr, uid, c: c.get('patient_id'),
     }
 
     _group_by_full = {'stage_id': _read_group_stage_ids}

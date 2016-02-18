@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="act_medical_patient_2_medical_appointment" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="res_model">medical.appointment</field>
+            <field name="inherit_id" ref="medical.medical_appointment_view_tree"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'patient_id': [active_id]}</field>
+            <field name="domain">[('patient_id', '=', active_id)]</field>          
+        </record>
+
+        <record id="medical_patient_view_button_appointment" model="ir.ui.view">
+            <field name="sequence" eval="2"/>
+            <field name="name">medical.patient.view.button.appointment</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="medical.medical_patient_view_form" />
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" 
+                            type="action" 
+                            name="%(act_medical_patient_2_medical_appointment)d"
+                            icon="fa-calendar">
+                    <field string="Appointments" name="appointment_count" widget="statinfo"/>
+                    </button>    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="act_medical_patient_2_sale_account_invoice" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="inherit_id" ref="sale.account_invoice_tree"/>
+            <!-- <field name="view_type">form</field> -->
+            <field name="src_model">res.partner</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="domain">[('partner_id', '=', active_id)]</field>
+            <!-- <field name="domain">[('type','in',('out_invoice', 'out_refund'))]</field> -->
+            <!-- <field name="context">{'default_partner_id': context.get('partner_id', False), 'default_customer': active_id, 'search_default_customer': 1}</field> -->
+            <!-- <field name="context">{'search_default_customer': active_id, 'partner_id': [active_id], 'default_customer': active_id, 'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field> -->
+            <!-- <field name="search_view_id" ref="account.view_account_invoice_filter"/> -->
+            <field name="context">{'search_default_customer': 1, 'partner_id': [active_id], 'default_customer': 1,'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <!-- <field name="context">{'partner_id': context.get('partner_id', False),'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale', 'search_default_partner_id': context.get('partner_id', False) , 'search_default_customer': context.get('partner_id', False), 'default_customer': active_id}</field> -->
+             <!-- <field name="context">{'default_partner_id': active_id}</field> -->
+        </record>
+
+        <record id="medical_patient_view_button_invoice" model="ir.ui.view">
+            <field name="sequence" eval="1"/>
+            <field name="name">medical.patient.view.button.invoice</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="medical.medical_patient_view_form" />
+            <field eval="21" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" 
+                            type="action" 
+                            name="%(act_medical_patient_2_sale_account_invoice)d"
+                            icon="fa-dollar">
+                    <field string="Invoices" name="invoice_count" widget="statinfo"/>
+                    </button>    
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

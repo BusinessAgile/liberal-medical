@@ -8,7 +8,7 @@ from openerp.osv import fields, orm
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID, models
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
-
+from openerp import api
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -79,6 +79,14 @@ patient_data()
 class AppointmentInvoice(models.Model):
     # _name = "medical.appointment.invoice"
     _inherit = 'medical.appointment'
+
+    # def onchange_patient_id(self, cr, uid, ids, name, context=None):
+    #     # Put your logic here
+    #     return {
+    #         'value': {
+    #             'patient_id': context.get('patient_id', False)
+    #         }
+    #     }
 
     def write(self, cr, uid, ids, values, context=None):
         if context is None:
