@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="act_medical_patient_2_medical_appointment" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="res_model">medical.appointment</field>
+            <field name="inherit_id" ref="medical.medical_appointment_view_tree"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'patient_id': [active_id]}</field>
+            <field name="domain">[('patient_id', '=', active_id)]</field>          
+        </record>
+
+        <record id="medical_patient_view_button_appointment" model="ir.ui.view">
+            <field name="sequence" eval="2"/>
+            <field name="name">medical.patient.view.button.appointment</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="medical.medical_patient_view_form" />
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" 
+                            type="action" 
+                            name="%(act_medical_patient_2_medical_appointment)d"
+                            icon="fa-calendar">
+                    <field string="Appointments" name="appointment_count" widget="statinfo"/>
+                    </button>    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="medical_patient_view_form_dob" model="ir.ui.view">
+            <field name="sequence" eval="2"/>
+            <field name="name">medical.patient.view.dob</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="medical.medical_patient_view_form" />
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='dob']" position="replace">
+                    <field name='dob' options="{'datepicker':{'yearRange': 'c-100:c+0'}}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="medical.medical_patient_action">
+             <field name="name">Patient</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="res_model">medical.patient</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,kanban,form</field>
+             <field name="search_view_id" ref="medical.medical_patient_view_search" />
+             <field name="domain">[]</field>
+             <field name="context">{}</field>
+         </record>
+
+        <record id="medical_appointment_view_calendar_button" model="ir.ui.view">
+            <field name="name">medical.appointment.calendar.button</field>
+            <field name="model">medical.appointment</field>
+            <field name="inherit_id" ref="medical.medical_appointment_view_calendar" />
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//calendar" position="replace">
+                    <calendar day_length="8" color="color" date_start="appointment_date" date_delay="duration" string="Calendar View" mode="week" >
+                        <field name="patient_first_name"/>
+                        <field name="duration_human_readable"/>
+                    </calendar>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="medical_appointment_view_autofill" model="ir.ui.view">
+            <field name="sequence" eval="2"/>
+            <field name="name">medical.appointment.view.autofill</field>
+            <field name="model">medical.appointment</field>
+            <field name="inherit_id" ref="medical.medical_appointment_view_form" />
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='patient_id']" position="replace">
+                    <field  name="patient_id" on_change="onchange_patient_id(patient_id)" default_focus="1"/>
+                </xpath>
+                <xpath expr="//field[@name='appointment_date']" position="replace"></xpath>
+                <xpath expr="//field[@name='specialty_id']" position="replace">
+
+                    <field name="appointment_date"/>
+                    <!-- Chain context into the child form view -->
+                    <field name='appointment_cluster_id' string="Appointment Group" context="{'form_view_ref':'medical_appointment_invoice.medical_appointment_cluster_form', 'default_patient_id': patient_id, 'default_consultations': consultations, 'default_physician_id': physician_id, 'default_name': name}"/>
+                </xpath>
+                <xpath expr="//field[@name='duration']" position="replace">
+                    <field name='duration' string="Duration"/>
+                </xpath>
+                <xpath expr="//field[@name='duration']" position="after">
+                    <field name='consultations' context="{'to_sell': 1, 'to_buy': 0}"/>
+                    <field name='invoice_id'/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="medical_appointment_cluster_form" model="ir.ui.view">
+            <field name="sequence" eval="10"/>
+            <field name="name">medical.appointment.cluster.form</field>
+            <field name="model">medical.appointment.cluster</field>
+            <field name="inherit_id" ref="medical.medical_appointment_view_form" />
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='patient_id']" position="replace">
+                    <field  name="patient_id" on_change="onchange_patient_id(patient_id)" />
+                    <field  name="consultations" />
+                    <field  name="physician_id"/>
+                </xpath>
+                <xpath expr="//header" position="replace"></xpath>
+                <xpath expr="//field[@name='alias']" position="replace"></xpath>
+                <xpath expr="//label[@string='Appointment']" position="replace">
+                    <label string="Appointment Cluster"/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='name']" position="replace"></xpath> -->
+                <xpath expr="//field[@name='urgency']" position="replace"></xpath>
+                <xpath expr="//field[@name='appointment_type']" position="replace"></xpath>
+                <xpath expr="//notebook" position="replace">
+                    <!-- Chain context into the child tree view -->
+                    <field name="appointment_ids"  context="{'default_patient_id': patient_id, 'default_consultations': consultations, 'default_physician_id': physician_id}">
+                        <tree string="Appointment" editable="bottom" create="true">
+                            <field name="name" string="Appointment"/>
+                            <field name='appointment_date' colspan="1"/>
+                            <field name='duration'/>
+                            <field name='stage_id'/>
+                            <field name="patient_id" invisible="1"/>
+                            <field name="consultations" invisible="1"/>
+                            <field name="physician_id" invisible="1"/>
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="act_medical_patient_2_sale_account_invoice" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="sequence" eval="16"/>
+            <field name="res_model">account.invoice</field>
+            <field name="inherit_id" ref="sale.account_invoice_tree"/>
+            <field name="view_type">form</field>
+            <field name="src_model">res.partner</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=', 'out_invoice')]</field>
+            <field name="context">{'form_view_ref':'sale.account_invoice_form', 'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        </record>
+
+        <record id="medical_patient_view_button_invoice" model="ir.ui.view">
+            <field name="sequence" eval="16"/>
+            <field name="name">medical.patient.view.button.invoice</field>
+            <field name="model">medical.patient</field>
+            <field name="inherit_id" ref="medical.medical_patient_view_form" />
+            <field eval="21" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name='partner_id' invisible="1"/>
+                </xpath>
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" 
+                            type="action" 
+                            name="%(act_medical_patient_2_sale_account_invoice)d"
+                            icon="fa-dollar"
+                            context="{'search_default_partner_id': [partner_id], 'default_customer': 1, 'default_supplier': 0, 'search_default_customer': 1}">
+                    <field string="Invoices" name="invoice_count" widget="statinfo"/>
+                    </button>    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="product.product_template_kanban_view"/>
+            <field name="context">{"search_default_filter_to_sell":1}</field>
+            <field name="domain">[('type','=','service')]</field>
+        </record>
+
+
+    <!--      <record model="ir.actions.act_window" id="medical_appointment_cluster_action">
+            <field name="name">Appointment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.appointment.cluster</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="medical_appointment_cluster_view_search" />
+            <field name="context">{}</field>
+        </record> -->
+            <!-- field name="domain">['|',('patient_id.user_id.id','=',uid),('doctor.user_id.id','=',uid)]</field -->
+
+        <!-- <record model="ir.actions.act_window.view" id="medical_appointment_cluster_form">
+            <field name="act_window_id" ref="medical_appointment_cluster_form" />
+            <field name="sequence" eval="40" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="medical_appointment_cluster_form" />
+        </record> -->
+
+        <record id="medical_appointment_cluster_action" model="ir.actions.act_window">
+            <field name="name">Appointment Clusters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.appointment.cluster</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="medical_appointment_cluster_form"/>
+        </record>
+            <!-- <field name="context">{"search_default_filter_to_sell":1}</field> -->
+            <!-- <field name="domain">[('type','=','service')]</field> -->
+
+        <menuitem id="medical.appointment_clusters"
+                  name="Appointment Clusters"
+                  parent="medical.medical_appointment_root"
+                  action="medical_appointment_cluster_action"
+                  sequence="20" />
+
+        <menuitem id="medical.medical_services"
+                  name="Consultation Services"
+                  parent="medical.medical_root_sub"
+                  action="product_template_action"
+                  sequence="5" />
+
+    </data>
+</openerp>
