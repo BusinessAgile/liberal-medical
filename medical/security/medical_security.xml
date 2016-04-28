@@ -42,7 +42,7 @@
     </record>
 
 </data>
-
+<!-- 
 <data noupdate="0">
     <record id="medical_appointment_access_rule_physician" model="ir.rule">
         <field name="name">Appointment Entry</field>
@@ -60,6 +60,7 @@
         <field name="domain_force">['|', ('institution_id','=',user.parent_id.id), ('institution','child_of',user.parent_id.id)]</field>
     </record>
 </data>
+-->
 <!--    
     <record id="medical_partner_access_rule_assistant" model="ir.rule">
         <field name="name">Partner Access rule for Assistants</field>

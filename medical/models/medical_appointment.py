@@ -128,11 +128,11 @@ class MedicalAppointment(orm.Model):
                                           help='Medical Center',
                                           domain="[('is_institution', '=',"
                                                  "True)]"),
-        'consultations': fields.many2one('medical.physician.services',
-                                         string='Consultation Services',
-                                         help='Consultation Services',
-                                         domain="[('physician_id', '=',"
-                                                "physician_id), ]"),
+        # 'consultations': fields.many2one('medical.physician.services',
+        #                                  string='Consultation Services',
+        #                                  help='Consultation Services',
+        #                                  domain="[('physician_id', '=',"
+        #                                         "physician_id), ]"),
         'urgency': fields.selection(
             [('a', 'Normal'), ('b', 'Urgent'), ('c', 'Medical Emergency'), ],
             string='Urgency Level'),
@@ -140,7 +140,7 @@ class MedicalAppointment(orm.Model):
             'medical.specialty', string='Specialty',
             help='Medical Specialty / Sector'
         ),
-        'invoice_id': fields.many2one('account.invoice', string='Related Invoice', readonly=True),
+        # 'invoice_id': fields.many2one('account.invoice', string='Related Invoice', readonly=True),
         'stage_id': fields.many2one('medical.appointment.stage', 'Stage',
                                     track_visibility='onchange'),
         'history_ids': fields.one2many('medical.appointment.history',
@@ -234,7 +234,7 @@ class MedicalAppointment(orm.Model):
                                               context=context)[0][1]
             # ### update history and any other for stage_id.onchange....
             val_history = {
-                'action': "----  Changed to {0}  ----".format(stage_name),
+                'action': "----  Changed to {0}  ----".format(stage_name.encode('utf-8')),
                 'appointment_id_history': ids[0],
                 'name': uid,
                 'date': time.strftime('%Y-%m-%d %H:%M:%S'),

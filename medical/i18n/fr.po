@@ -1,0 +1,1532 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* medical
+# 	* medical_appointment_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Medical\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-15 14:05+0000\n"
+"PO-Revision-Date: 2016-02-29 16:00+0100\n"
+"Last-Translator: Business Agile <info@businessagile.eu>\n"
+"Language-Team: Business Agile <info@businessagile.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: medical
+#: model:email.template,body_html:medical.email_template_appointment_confirmation
+msgid ""
+"\n"
+"                <div class=\"content-wrapper\" style=\"max-width:650px;\">\n"
+"                    <div class=\"col-sm-12 highlight\">\n"
+"                        <p> <b>Dear ${object.patient_id.name}</b> </p>\n"
+"                        <p>The following appointment has been created "
+"successfully</p>\n"
+"                        <div class=\"row\"></div>\n"
+"\n"
+"                        <div class=\"col-sm-8 highlight\">\n"
+"                            <p>Doctor....: <b>${object.physician_id.name}</"
+"b></p>\n"
+"                            <p>Date.....: <b>${ctx.get('appointment_date') "
+"or object.appointment_date[:10]}</b><img class=\"img-responsive\" style="
+"\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/"
+"Banners/calendar.png\"></p>\n"
+"                            <p>Time......: <b>${ctx.get('appointment_time') "
+"or object.appointment_date[11:]}</b></p>\n"
+"                            <p>Clinic...: <b>${object.institution_id.name}</"
+"b></p>\n"
+"                            <p>Phone..: <b>${object.institution_id.phone}</"
+"b></p>\n"
+"                            <p>Address.: <b>${object.institution_id.street} "
+"${object.institution_id.street2}</b></p>\n"
+"                        </div>\n"
+"                    </div>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"\n"
+"                <div class=\"content-wrapper\" style=\"max-width:650px;\">\n"
+"                    <div class=\"col-sm-12 highlight\">\n"
+"                        <p> <b>Cher ${object.patient_id.name}</b> </p>\n"
+"                        <p>Le rendez-vous suivant a été créé avec succès</"
+"p>\n"
+"                        <div class=\"row\"></div>\n"
+"\n"
+"                        <div class=\"col-sm-8 highlight\">\n"
+"                            <p>Médecin....: <b>${object.physician_id.name}</"
+"b></p>\n"
+"                            <p>Date.....: <b>${ctx.get('appointment_date') "
+"or object.appointment_date[:10]}</b><img class=\"img-responsive\" style="
+"\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/"
+"Banners/calendar.png\"></p>\n"
+"                            <p>Heure......: <b>${ctx.get('appointment_time') "
+"or object.appointment_date[11:]}</b></p>\n"
+"                            <p>Centre...: <b>${object.institution_id.name}</"
+"b></p>\n"
+"                            <p>Téléphone..: <b>${object.institution_id.phone}"
+"</b></p>\n"
+"                            <p>Adresse.: <b>${object.institution_id.street} "
+"${object.institution_id.street2}</b></p>\n"
+"                        </div>\n"
+"                    </div>\n"
+"                </div>\n"
+"            "
+
+#. module: medical
+#: model:email.template,body_html:medical.sms_template_appointment_confirmation
+msgid ""
+"\n"
+"<p>Your appointment with Dr. ${object.physician_id.lastname} on ${ctx."
+"get('appointment_date') or object.appointment_date[:10]} ${ctx."
+"get('appointment_time') or object.appointment_date[11:]} has been confirmed."
+"</p>\n"
+"            "
+msgstr ""
+"\n"
+"<p>Votre rendez-vous avec Dr. ${object.physician_id.lastname} le ${ctx."
+"get('appointment_date') or object.appointment_date[:10]} à ${ctx."
+"get('appointment_time') or object.appointment_date[11:]} a été confirmé.</"
+"p>\n"
+"            "
+
+#. module: medical
+#: code:addons/medical/models/medical_patient.py:49
+#, python-format
+msgid " (deceased)"
+msgstr "(décédé)"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_appointment_root
+#: model:ir.ui.menu,name:medical.medical_appointment
+msgid " Appointment"
+msgstr " Rendez-vous"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_specialty
+msgid " Medical Specialty"
+msgstr " Spécialité médicale"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_patient
+msgid " Patient"
+msgstr " Patient"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_physician_admin
+msgid " Physician [Admin]"
+msgstr " Médecin [Admin]"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_physician_assistant
+msgid " Physician [Asistant]"
+msgstr " Médecin [Asistant]"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_physician_self
+msgid " Physician [Self]"
+msgstr " Médecin [Self]"
+
+#. module: medical
+#: model:email.template,subject:medical.sms_template_appointment_confirmation
+msgid "${object.institution_id.name}  -  Confirmación de Cita"
+msgstr "${object.institution_id.name}  -  Confirmation de rendez-vous"
+
+#. module: medical
+#: model:email.template,subject:medical.email_template_appointment_confirmation
+msgid ""
+"${object.institution_id.name} <${(object.institution_id.email or user.email)|"
+"safe}> - Appointment Confirmation"
+msgstr ""
+"${object.institution_id.name} <${(object.institution_id.email or user.email)|"
+"safe}> - Confirmation de rendez-vous"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_hour:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "00"
+msgstr "00"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "01"
+msgstr "01"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "02"
+msgstr "02"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "03"
+msgstr "03"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "04"
+msgstr "04"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_hour:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "05"
+msgstr "05"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "06"
+msgstr "06"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "07"
+msgstr "07"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "08"
+msgstr "08"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "09"
+msgstr "09"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_hour:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "10"
+msgstr "10"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "11"
+msgstr "11"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "12"
+msgstr "12"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "13"
+msgstr "13"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "14"
+msgstr "14"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_hour:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "15"
+msgstr "15"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "16"
+msgstr "16"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "17"
+msgstr "17"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "18"
+msgstr "18"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "19"
+msgstr "19"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_hour:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "20"
+msgstr "20"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "21"
+msgstr "21"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "22"
+msgstr "22"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,end_hour:0
+#: selection:medical.physician.schedule.template,start_hour:0
+msgid "23"
+msgstr "23"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "25"
+msgstr "25"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "30"
+msgstr "30"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "35"
+msgstr "35"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "40"
+msgstr "40"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "45"
+msgstr "45"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "50"
+msgstr "50"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,duration:0
+#: selection:medical.physician.schedule.template,end_minute:0
+#: selection:medical.physician.schedule.template,start_minute:0
+#: selection:medical.physician.services,service_duration:0
+msgid "55"
+msgstr "55"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_absent
+msgid "Absent"
+msgstr "Pas venu"
+
+#. module: medical
+#: field:medical.appointment.history,action:0
+msgid "Action"
+msgstr "Action"
+
+#. module: medical
+#: field:res.partner,activation_date:0
+msgid "Activation date"
+msgstr "Date d'activation"
+
+#. module: medical
+#: field:medical.patient,active:0 field:medical.physician,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Address"
+msgstr "Adresse"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_search
+msgid "Age"
+msgstr "Âge"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_kanban
+msgid "Age:"
+msgstr "Âge :"
+
+#. module: medical
+#: field:medical.appointment,alias:0 field:res.partner,alias:0
+msgid "Alias"
+msgstr "Alias"
+
+#. module: medical
+#: selection:medical.appointment,appointment_type:0
+msgid "Ambulatory"
+msgstr "Ambulatoire"
+
+#. module: medical
+#: model:ir.actions.act_window,name:medical.medical_appointment_action
+#: view:medical.appointment:medical.medical_appointment_view_form
+msgid "Appointment"
+msgstr "Rendez-vous"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,name:0
+msgid "Appointment ID"
+msgstr "ID Rendez-vous"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:223
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:66
+#, python-format
+msgid "Appointment already invoiced"
+msgstr "Rendez-vous déjà facturé"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:218
+#, python-format
+msgid "Appointment cannot be created due to an internal error : "
+msgstr "Le rendez-vous n'a pu être créé en raison d'une erreur interne"
+
+#. module: medical_appointment_invoice
+#: model:ir.actions.act_window,name:medical_appointment_invoice.act_medical_patient_2_medical_appointment
+#: view:medical.patient:medical_appointment_invoice.medical_patient_view_button_appointment
+msgid "Appointments"
+msgstr "Rendez-vous"
+
+#. module: medical
+#: model:ir.model,name:medical.model_medical_physician_unavailable_wizard
+msgid "Asistente para la definicion de indisponibilidades"
+msgstr ""
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:71
+#, python-format
+msgid "At least one of the selected appointments can not be invoiced"
+msgstr "Au moins un des rendez-vous sélectionnés ne peut être facturé"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:62
+#, python-format
+msgid "At least one of the selected appointments is already invoiced"
+msgstr "Au moins un des rendez-vous sélectionnés a déjà été facturé"
+
+#. module: medical
+#: model:ir.actions.act_window,name:medical.medical_physician_unavailable_wizard_act
+msgid "Block Off Schedule"
+msgstr "Barrer le calendrier"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_calendar
+msgid "Calendar View"
+msgstr "Vue Calendrier"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_canceled
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: medical
+#: help:res.partner,is_institution:0
+msgid "Check if the party is a Medical Center"
+msgstr "Cocher si le partenaire est un centre médical"
+
+#. module: medical
+#: help:res.partner,is_pharmacy:0
+msgid "Check if the party is a Pharmacy"
+msgstr "Cocher si le partenaire est une pharmacie"
+
+#. module: medical
+#: help:res.partner,is_doctor:0
+msgid "Check if the party is a health professional"
+msgstr "Cocher si le partenaire est un professionnel de santé"
+
+#. module: medical
+#: help:res.partner,is_insurance_company:0 help:res.partner,is_patient:0
+msgid "Check if the party is a patient"
+msgstr "Cocher si le partenaire est un patient"
+
+#. module: medical
+#: help:res.partner,is_person:0
+msgid "Check if the party is a person."
+msgstr "Cocher si le partenaire est une personne"
+
+#. module: medical
+#: help:product.product,is_medical_supply:0
+msgid "Check if the product is a medical supply"
+msgstr "Cocher si le produit est un médicament"
+
+#. module: medical
+#: help:product.product,is_vaccine:0
+msgid "Check if the product is a vaccine"
+msgstr "Cocher si le produit est un vaccin"
+
+#. module: medical
+#: help:product.product,is_insurance_plan:0
+msgid "Check if the product is an insurance plan"
+msgstr "Cocher si le produit est un régime d'assurance"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "City"
+msgstr "Ville"
+
+#. module: medical
+#: view:medical.specialty:medical.medical_specialty_view_search
+#: field:medical.specialty,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,comments:0
+msgid "Comments"
+msgstr "Commentaires"
+
+#. module: medical
+#: help:res.partner,alias:0
+msgid "Common name that the Party is reffered"
+msgstr "Nom usuel sous lequel est connu le partenaire"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Company"
+msgstr "Société"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_root_sub
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_confirm
+msgid "Confirm"
+msgstr "Confirmé"
+
+#. module: medical
+#: field:medical.appointment,consultations:0
+msgid "Consultation Service"
+msgstr "Service de consultation"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: help:medical.appointment,consultations:0
+msgid "Consultation Services"
+msgstr "Services de consultation"
+
+#. module: medical
+#: field:res.partner,relative_id:0
+msgid "Contact"
+msgstr "Contact"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Contact Information"
+msgstr "Information du contact"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Country"
+msgstr "Pays"
+
+#. module: medical
+#: field:medical.appointment,create_uid:0
+#: field:medical.appointment.history,create_uid:0
+#: field:medical.appointment.stage,create_uid:0
+#: field:medical.patient,create_uid:0 field:medical.physician,create_uid:0
+#: field:medical.physician.schedule.template,create_uid:0
+#: field:medical.physician.services,create_uid:0
+#: field:medical.physician.unavailable.wizard,create_uid:0
+#: field:medical.specialty,create_uid:0
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: medical
+#: field:medical.appointment,create_date:0
+#: field:medical.appointment.history,create_date:0
+#: field:medical.appointment.stage,create_date:0
+#: field:medical.patient,create_date:0 field:medical.physician,create_date:0
+#: field:medical.physician.schedule.template,create_date:0
+#: field:medical.physician.services,create_date:0
+#: field:medical.physician.unavailable.wizard,create_date:0
+#: field:medical.specialty,create_date:0
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,appointment_date:0
+#: field:medical.appointment.history,date:0
+msgid "Date and Time"
+msgstr "Date et Heure"
+
+#. module: medical
+#: field:medical.patient,dob:0
+msgid "Date of Birth"
+msgstr "Date de naissance"
+
+#. module: medical
+#: help:res.partner,activation_date:0
+msgid "Date of activation of the party"
+msgstr "Date d'activation du partenaire"
+
+#. module: medical
+#: field:medical.physician.schedule.template,day:0
+msgid "Day"
+msgstr "Jour"
+
+#. module: medical
+#: field:medical.patient,deceased:0
+msgid "Deceased"
+msgstr "Décédé(e)"
+
+#. module: medical
+#: field:medical.patient,dod:0
+msgid "Deceased Date"
+msgstr "Date de décès"
+
+#. module: medical
+#: field:medical.appointment.stage,is_default:0
+msgid "Default?"
+msgstr ""
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Dependant"
+msgstr "Personne à charge"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Dependant Name"
+msgstr "Nom de la personne à charge"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Dependants"
+msgstr "Personnes à charge"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "Divorced"
+msgstr "Divorcé(e)"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_search
+msgid "DoB"
+msgstr "Date de naissance"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_done
+msgid "Done"
+msgstr "Fait"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_new
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: medical
+#: field:medical.appointment,duration:0
+#: field:medical.physician.schedule.template,duration:0
+#: field:medical.physician.services,service_duration:0
+msgid "Duration"
+msgstr "Durée"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_kanban
+msgid "Duration:"
+msgstr "Durée :"
+
+#. module: medical
+#: field:medical.physician.unavailable.wizard,date_end:0
+msgid "End"
+msgstr "Fin"
+
+#. module: medical
+#: code:addons/medical/models/medical_appointment.py:193
+#, python-format
+msgid "Error!"
+msgstr "Erreur !"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_search
+#: field:medical.physician,info:0
+msgid "Extra info"
+msgstr "Informations supplémentaires"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Fax:"
+msgstr "Fax :"
+
+#. module: medical
+#: selection:medical.patient,gender:0
+msgid "Female"
+msgstr "Femme"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "First Name Last Name"
+msgstr "Prénom Nom"
+
+#. module: medical
+#: field:medical.appointment.stage,fold:0
+msgid "Folded in Kanban View"
+msgstr "Minimisé dans la vue Kanban"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Friday"
+msgstr "Vendredi"
+
+#. module: medical
+#: field:medical.patient,gender:0
+msgid "Gender"
+msgstr "Genre"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: field:medical.patient,general_info:0
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "General Information"
+msgstr "Informations générales"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: view:medical.patient:medical.medical_patient_view_search
+#: view:medical.physician:medical.medical_physician_view_search
+#: view:medical.specialty:medical.medical_specialty_view_search
+msgid "Group By..."
+msgstr "Grouper par"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,institution_id:0
+msgid "Health Center"
+msgstr "Centre de santé"
+
+#. module: medical
+#: field:res.partner,is_doctor:0
+msgid "Health Prof"
+msgstr "Professionnel de santé"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_conf_physicians
+msgid "Health Professionals"
+msgstr "Professionnels de santé"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_form
+#: field:medical.appointment.history,appointment_id_history:0
+msgid "History"
+msgstr "Antécédents"
+
+#. module: medical
+#: field:medical.appointment,history_ids:0
+msgid "History lines"
+msgstr "Antécédents"
+
+#. module: medical
+#: field:medical.physician.schedule.template,end_hour:0
+#: field:medical.physician.schedule.template,start_hour:0
+msgid "Hour"
+msgstr "Heure"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "I don't want to receive comercial messages"
+msgstr "Je ne souhaite pas recevoir de messages commerciaux"
+
+#. module: medical
+#: field:medical.appointment,id:0 field:medical.appointment.history,id:0
+#: field:medical.appointment.stage,id:0 field:medical.patient,id:0
+#: field:medical.physician,code:0 field:medical.physician,id:0
+#: field:medical.physician.schedule.template,id:0
+#: field:medical.physician.services,id:0
+#: field:medical.physician.unavailable.wizard,id:0
+#: field:medical.specialty,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: medical
+#: help:medical.appointment.stage,is_default:0
+msgid "If checked, this stage will be selected when creating new appointments."
+msgstr ""
+"Si coché, cette étape sera sélectionné à la création de nouveaux rendez-vous"
+
+#. module: medical
+#: help:medical.physician,active:0
+msgid ""
+"If unchecked, it will allow you to hide the physician without removing it."
+msgstr "Si décoché, vous pourrez cacher un médecin sans le supprimer"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_in_consultation
+msgid "In Consultation"
+msgstr "En consultation"
+
+#. module: medical
+#: selection:medical.appointment,appointment_type:0
+msgid "Inpatient"
+msgstr "Malade hospitalisé(e)"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_search
+#: field:res.partner,is_institution:0
+msgid "Institution"
+msgstr "Institution"
+
+#. module: medical
+#: field:res.partner,is_insurance_company:0
+msgid "Insurance"
+msgstr "Assurance"
+
+#. module: medical
+#: field:product.product,is_insurance_plan:0
+msgid "Insurance Plan"
+msgstr "Régime d'assurance"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Internal ID"
+msgstr "ID interne"
+
+#. module: medical
+#: field:medical.patient,identification_code:0
+msgid "Internal Identification"
+msgstr "Identifiant interne"
+
+#. module: medical_appointment_invoice
+#: field:medical.appointment,no_invoice:0
+msgid "Invoice exempt"
+msgstr "Dispensé(e) de facturation"
+
+#. module: medical_appointment_invoice
+#: selection:medical.appointment,validity_status:0
+msgid "Invoiced"
+msgstr "Facturé(e)"
+
+#. module: medical_appointment_invoice
+#: model:ir.actions.act_window,name:medical_appointment_invoice.act_medical_patient_2_sale_account_invoice
+#: view:medical.patient:medical_appointment_invoice.medical_patient_view_button_invoice
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: medical
+#: field:res.partner,last_name:0 help:res.partner,last_name:0
+msgid "Last Name"
+msgstr "Nom"
+
+#. module: medical
+#: field:medical.appointment,write_uid:0
+#: field:medical.appointment.history,write_uid:0
+#: field:medical.appointment.stage,write_uid:0
+#: field:medical.patient,write_uid:0 field:medical.physician,write_uid:0
+#: field:medical.physician.schedule.template,write_uid:0
+#: field:medical.physician.services,write_uid:0
+#: field:medical.physician.unavailable.wizard,write_uid:0
+#: field:medical.specialty,write_uid:0
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: medical
+#: field:medical.appointment,write_date:0
+#: field:medical.appointment.history,write_date:0
+#: field:medical.appointment.stage,write_date:0
+#: field:medical.patient,write_date:0 field:medical.physician,write_date:0
+#: field:medical.physician.schedule.template,write_date:0
+#: field:medical.physician.services,write_date:0
+#: field:medical.physician.unavailable.wizard,write_date:0
+#: field:medical.specialty,write_date:0
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Legal ID"
+msgstr "Identifiant légal"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Legal Representative"
+msgstr "Représentant légal"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_form
+msgid "Main"
+msgstr "Principal"
+
+#. module: medical
+#: selection:medical.patient,gender:0
+msgid "Male"
+msgstr "Homme"
+
+#. module: medical
+#: field:medical.patient,marital_status:0
+msgid "Marital status"
+msgstr "Statut marital"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "Married"
+msgstr "Marié(e)"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_root
+#: view:res.partner:medical.view_res_partner_form
+msgid "Medical"
+msgstr "Médical"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_form
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: view:medical.appointment:medical.medical_appointment_view_tree
+msgid "Medical Appointment"
+msgstr "Rendez-vous chez le médecin"
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_assistant
+msgid "Medical Assistant"
+msgstr "Assistant(e) médical"
+
+#. module: medical
+#: help:medical.appointment,institution_id:0
+#: field:medical.patient,medical_center_id:0
+#: field:medical.physician.unavailable.wizard,institution_id:0
+msgid "Medical Center"
+msgstr "Centre médical"
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_center_manager
+msgid "Medical Center Manager"
+msgstr "Responsable du centre médical"
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_configurator
+msgid "Medical Configurator"
+msgstr ""
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_doctor
+msgid "Medical Doctor"
+msgstr "Docteur"
+
+#. module: medical
+#: selection:medical.appointment,urgency:0
+msgid "Medical Emergency"
+msgstr "Urgence médicale"
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_manager
+msgid "Medical Manager"
+msgstr "Responsable médical"
+
+#. modules: medical, medical_appointment_invoice
+#: model:ir.model,name:medical.model_medical_patient
+#: view:medical.patient:medical.medical_patient_view_search
+#: view:medical.patient:medical.medical_patient_view_tree
+#: model:ir.model,name:medical_appointment_invoice.model_medical_patient
+msgid "Medical Patient"
+msgstr "Patient"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_form
+#: view:medical.physician:medical.medical_physician_view_search
+#: view:medical.physician:medical.medical_physician_view_tree
+msgid "Medical Physician"
+msgstr "Médecin"
+
+#. module: medical
+#: view:medical.specialty:medical.medical_specialty_view_form
+#: view:medical.specialty:medical.medical_specialty_view_search
+#: view:medical.specialty:medical.medical_specialty_view_tree
+msgid "Medical Specialty"
+msgstr "Spécialité médicale"
+
+#. module: medical
+#: help:medical.appointment,specialty_id:0
+msgid "Medical Specialty / Sector"
+msgstr "Spécialité médicale"
+
+#. module: medical
+#: field:product.product,is_medical_supply:0
+msgid "Medical Supply"
+msgstr "Médicament"
+
+#. module: medical
+#: model:res.groups,name:medical.group_medical_user
+msgid "Medical User"
+msgstr "Usager"
+
+#. module: medical_appointment_invoice
+#: field:medical.patient,appointment_ids:0
+msgid "Medical appointment"
+msgstr "Rendez-vous chez le médecin"
+
+#. module: medical
+#: field:medical.patient,invoice_ids:0
+msgid "Medical invoice"
+msgstr "Facture"
+
+#. module: medical
+#: field:medical.physician.schedule.template,end_minute:0
+#: field:medical.physician.schedule.template,start_minute:0
+msgid "Minute"
+msgstr "Minute"
+
+#. module: medical
+#: model:ir.ui.menu,name:medical.medical_root_misc
+msgid "Misc"
+msgstr "Divers"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Mobile:"
+msgstr "Portable :"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Monday"
+msgstr "Lundi"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "More Info"
+msgstr "Plus d'informations"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_search
+msgid "Name"
+msgstr "Nom"
+
+#. module: medical
+#: sql_constraint:medical.specialty:0
+msgid "Name must be unique!"
+msgstr "Le nom doit être unique !"
+
+#. module: medical
+#: code:addons/medical/models/medical_patient.py:57
+#, python-format
+msgid "No DoB !"
+msgstr "N/C"
+
+#. module: medical
+#: code:addons/medical/models/medical_patient.py:57
+#, python-format
+msgid "y"
+msgstr "ans"
+
+#. module: medical
+#: code:addons/medical/models/medical_patient.py:57
+#, python-format
+msgid "m"
+msgstr "mois"
+
+#. module: medical
+#: code:addons/medical/models/medical_patient.py:57
+#, python-format
+msgid "d"
+msgstr "jours"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:191
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:121
+#, python-format
+msgid "No consultation service is connected with the selected appointments"
+msgstr "Aucun service médical n'est lié aux rendez-vous sélectionnés"
+
+#. module: medical
+#: code:addons/medical/models/medical_appointment.py:194
+#, python-format
+msgid "No default stage defined for review"
+msgstr ""
+
+#. module: medical
+#: selection:medical.appointment,urgency:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_form
+msgid "Notes"
+msgstr "Notes"
+
+#. module: medical
+#: selection:medical.appointment,appointment_type:0
+msgid "Outpatient"
+msgstr "Malade en consultation externe"
+
+#. module: medical
+#: model:ir.model,name:medical.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: medical
+#: field:medical.patient,partner_id:0
+msgid "Partner id"
+msgstr "ID Partenaire"
+
+#. module: medical
+#: help:medical.physician,partner_id:0
+msgid "Partner related data of the physician"
+msgstr "Partenaire lié aux données du médecin"
+
+#. module: medical
+#: model:ir.actions.act_window,name:medical.medical_patient_action
+#: model:ir.ui.menu,name:medical.medical_patient_root
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,patient_id:0
+#: view:medical.patient:medical.medical_patient_view_form
+#: field:res.partner,is_patient:0
+msgid "Patient"
+msgstr "Patient"
+
+#. module: medical
+#: help:medical.patient,identification_code:0
+msgid ""
+"Patient Identifier provided by the Health Center.(different from the Social "
+"Security Number)"
+msgstr ""
+"Identifiant du patient défini par le centre de santé (différent du numéro de "
+"Sécurité Sociale)"
+
+#. module: medical
+#: help:medical.appointment,patient_id:0
+msgid "Patient Name"
+msgstr "Nom du patient"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_kanban
+msgid "Patient:"
+msgstr "Patient :"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_in_review
+msgid "Pending Review"
+msgstr "En attente d'un examen"
+
+#. module: medical
+#: field:res.partner,is_person:0
+msgid "Person"
+msgstr "Personne"
+
+#. module: medical
+#: field:res.partner,is_pharmacy:0
+msgid "Pharmacy"
+msgstr "Pharmacie"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Phone:"
+msgstr "Téléphone :"
+
+#. module: medical
+#: model:ir.actions.act_window,name:medical.medical_physician_action
+#: model:ir.actions.act_window,name:medical.medical_physician_action_self
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,physician_id:0
+#: field:medical.physician.schedule.template,physician_id:0
+#: field:medical.physician.services,physician_id:0
+#: field:medical.physician.unavailable.wizard,physician_id:0
+msgid "Physician"
+msgstr "Médecin"
+
+#. module: medical
+#: help:medical.appointment,physician_id:0
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Physician's Name"
+msgstr "Nom du médecin"
+
+#. module: medical
+#: view:medical.appointment:medical.medical_appointment_view_kanban
+msgid "Physician:"
+msgstr "Médecin :"
+
+#. module: medical
+#: model:ir.model,name:medical.model_product_product
+msgid "Product"
+msgstr "Produit"
+
+#. module: medical
+#: help:medical.physician.services,product_id:0
+msgid "Product related information for Appointment Type"
+msgstr ""
+
+#. module: medical_appointment_invoice
+#: field:medical.patient,receivable:0
+msgid "Receivable"
+msgstr ""
+
+#. module: medical
+#: field:medical.appointment,invoice_id:0
+msgid "Related Invoice"
+msgstr "Facture liée"
+
+#. module: medical
+#: field:medical.physician,partner_id:0
+msgid "Related Partner"
+msgstr "Partenaire lié"
+
+#. module: medical
+#: field:res.partner,patient_ids:0
+msgid "Related Patients"
+msgstr "Patients liés"
+
+#. module: medical
+#: field:medical.physician.services,product_id:0
+msgid "Related Product"
+msgstr "Produit lié"
+
+#. module: medical
+#: field:medical.physician,schedule_template_ids:0
+msgid "Related schedules"
+msgstr "Agenda liés"
+
+#. module: medical
+#: field:res.partner,relationship:0
+msgid "Relationship"
+msgstr "Relation"
+
+#. module: medical
+#: field:medical.appointment.stage,requirements:0
+msgid "Requirements"
+msgstr "Exigences"
+
+#. module: medical
+#: field:medical.appointment,user_id:0
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_kanban
+msgid "SSN:"
+msgstr "N°SS :"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Saturday"
+msgstr "Samedi"
+
+#. module: medical
+#: field:res.partner,is_school:0
+msgid "School"
+msgstr "Ecole"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "Separated"
+msgstr "Séparé(e)"
+
+#. module: medical
+#: field:medical.appointment.stage,sequence:0
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_kanban
+msgid "Sex:"
+msgstr "Genre :"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "Single"
+msgstr "Célibataire"
+
+#. module: medical
+#: model:ir.actions.act_window,name:medical.medical_specialty_action
+#: view:medical.appointment:medical.medical_appointment_view_search
+#: field:medical.appointment,specialty_id:0
+#: view:medical.physician:medical.medical_physician_view_search
+#: field:medical.physician,specialty_id:0
+#: view:medical.specialty:medical.medical_specialty_view_search
+#: field:medical.specialty,name:0
+msgid "Specialty"
+msgstr "Spécialité"
+
+#. module: medical
+#: help:medical.physician,specialty_id:0
+msgid "Specialty Code"
+msgstr "Code de spécialité"
+
+#. module: medical
+#: field:medical.appointment,stage_id:0
+msgid "Stage"
+msgstr "Etape"
+
+#. module: medical
+#: field:medical.appointment.stage,name:0
+msgid "Stage Name"
+msgstr "Libellé d'étape"
+
+#. module: medical
+#: model:ir.model,name:medical.model_medical_appointment_stage
+msgid "Stage of Appointment"
+msgstr "Etape du rendez-vous"
+
+#. module: medical
+#: field:medical.physician.unavailable.wizard,date_start:0
+msgid "Start"
+msgstr "Démarrage"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "State"
+msgstr "État"
+
+#. module: medical_appointment_invoice
+#: field:medical.appointment,validity_status:0
+msgid "Status"
+msgstr "Statut"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "Street..."
+msgstr "Rue"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Sunday"
+msgstr "Dimanche"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "Tags..."
+msgstr "Etiquettes"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:56
+#, python-format
+msgid "The appointment is invoice exempt"
+msgstr "Le rendez-vous est dispensé de facture"
+
+#. module: medical
+#: help:medical.appointment.stage,fold:0
+msgid ""
+"This stage is folded in the kanban view when there are no records in that "
+"stage to display."
+msgstr ""
+"Cette étape est minimisée dans la vue kanban lorsque il n'y a pas "
+"d'enregistrements à afficher dans cette étape."
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Thursday"
+msgstr "Jeudi"
+
+#. module: medical_appointment_invoice
+#: selection:medical.appointment,validity_status:0
+msgid "To be Invoiced"
+msgstr "A facturer"
+
+#. module: medical_appointment_invoice
+#: help:medical.patient,receivable:0
+msgid "Total amount this patient owes you"
+msgstr "Crédit patient"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Tuesday"
+msgstr "Mardi"
+
+#. module: medical
+#: field:medical.appointment,appointment_type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_unavailable
+msgid "Unavailable"
+msgstr "Indisponible"
+
+#. module: medical
+#: field:medical.appointment,urgency:0
+msgid "Urgency Level"
+msgstr "Niveau d'urgence"
+
+#. module: medical
+#: selection:medical.appointment,urgency:0
+msgid "Urgent"
+msgstr "Urgent"
+
+#. module: medical
+#: help:medical.appointment.stage,sequence:0
+msgid "Used to order stages. Lower is better."
+msgstr "Utilisé pour classer les étapes (la plus étant la plus avancée)"
+
+#. module: medical
+#: field:medical.appointment.history,name:0
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:190
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:217
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:222
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:55
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:61
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:65
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:70
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:74
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:120
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:151
+#, python-format
+msgid "UserError"
+msgstr "Erreur de l'utilisateur"
+
+#. module: medical
+#: field:product.product,is_vaccine:0
+msgid "Vaccine"
+msgstr "Vaccin"
+
+#. module: medical_appointment_invoice
+#: field:medical.appointment,appointment_validity_date:0
+msgid "Validity Date"
+msgstr "Date de péremption"
+
+#. module: medical
+#: model:medical.appointment.stage,name:medical.stage_appointment_waiting
+msgid "Waiting"
+msgstr "En attente"
+
+#. module: medical
+#: selection:medical.physician.schedule.template,day:0
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:152
+#, python-format
+msgid "When multiple appointments are selected, patient must be the same"
+msgstr ""
+"Vous ne pouvez sélectionner plusieurs rendez-vous que s'ils sont liés à un "
+"même patient"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "Widowed"
+msgstr "Veuf/Veuve"
+
+#. module: medical
+#: field:res.partner,is_work:0
+msgid "Work"
+msgstr "Travail"
+
+#. module: medical_appointment_invoice
+#: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:75
+#, python-format
+msgid "You can not invoice this appointment"
+msgstr "Vous ne pouvez pas facturer ce rendez-vous"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "ZIP"
+msgstr "ZIP"
+
+#. module: medical_appointment_invoice
+#: view:medical.appointment:medical_appointment_invoice.medical_appointment_view_form_onchange
+msgid "['|', ('patient_id', '=', active_id)]"
+msgstr "['|', ('patient_id', '=', active_id)]"
+
+#. module: medical
+#: view:medical.physician.unavailable.wizard:medical.medical_physician_unavailable_wizard_form
+msgid "_Apply"
+msgstr "_Appliquer"
+
+#. module: medical
+#: view:medical.physician.unavailable.wizard:medical.medical_physician_unavailable_wizard_form
+msgid "_Cancel"
+msgstr "_Annuler"
+
+#. module: medical_appointment_invoice
+#: field:medical.patient,appointment_count:0
+msgid "appointments count"
+msgstr "Nombre de rendez-vous"
+
+#. module: medical
+#: field:medical.appointment,date_end:0
+msgid "do not display"
+msgstr "Ne pas afficher"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "e.g. +32.81.81.37.00"
+msgstr "par ex. +33.1.23.45.67.89"
+
+#. module: medical
+#: view:medical.physician:medical.medical_physician_view_form
+msgid "e.g. +506 5555 5555"
+msgstr "par ex. +33.1.23.45.67.89"
+
+#. module: medical
+#: view:medical.patient:medical.medical_patient_view_form
+msgid "e.g. www.openerp.com"
+msgstr "par ex. http://businessagile.eu"
+
+#. module: medical_appointment_invoice
+#: field:medical.patient,invoice_count:0
+msgid "invoices count"
+msgstr "Nombre de factures"
+
+#. module: medical
+#: selection:medical.patient,marital_status:0
+msgid "law marriage"
+msgstr "PACS"
+
+#. module: medical_appointment_invoice
+#: view:medical.appointment:medical_appointment_invoice.medical_appointment_view_form_onchange
+msgid "{'patient_id': [active_id]}"
+msgstr "{'patient_id': [active_id]}"

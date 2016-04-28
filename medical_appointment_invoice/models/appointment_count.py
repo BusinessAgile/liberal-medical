@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class MedicalAppointment(osv.osv):
     _inherit = 'medical.patient'
-    _inherits = { 'res.partner' : 'partner_id'}
+    _inherits = { 'res.partner': 'partner_id'}
 
     def _appointment_count(self, cr, uid, ids, field_name, args, context=None):
         res = dict(map(lambda x: (x,0), ids))
@@ -34,12 +34,13 @@ class MedicalAppointment(osv.osv):
         patient = self.pool.get('medical.patient').browse(cr, uid, ids, context=context)
         # apps = self.pool.get('medical.appointment').search([('patient_id', '=', patient.id)])
         apps = patient.env['medical.appointment'].search([('patient_id', '=', patient.id), ('validity_status', '=', 'invoiced')])
-        _logger.debug(apps)
+        # _logger.debug(apps)
         # _logger.debug(envv)
-        # _logger.debug(patient)
+        # context.update({'active_id': patient.id})
+        _logger.debug(context.get('id'))
         try:
             for appointment in apps:
-                _logger.debug(len(appointment.invoice_id))
+                # _logger.debug(len(appointment.invoice_id))
                 res[patient.id] += len(appointment.invoice_id)
         except:
             pass

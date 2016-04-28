@@ -24,6 +24,7 @@
     
     'data': [
         'views/medical_patient_view_button.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
     'application': False,

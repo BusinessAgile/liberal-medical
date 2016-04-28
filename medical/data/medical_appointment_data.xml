@@ -3,11 +3,11 @@
     <data noupdate="0">
 
         <!-- Medical Appointment stages -->
-        <record model="medical.appointment.stage" id="stage_appointment_in_review">
+      <!--   <record model="medical.appointment.stage" id="stage_appointment_in_review">
             <field name="name">Pending Review</field>
             <field name="sequence">5</field>
             <field name="fold">True</field>
-        </record>
+        </record> -->
         <record model="medical.appointment.stage" id="stage_appointment_new">
             <field name="name">Draft</field>
             <field name="sequence">10</field>
@@ -17,26 +17,26 @@
             <field name="name">Confirm</field>
             <field name="sequence">20</field>
         </record>
-        <record model="medical.appointment.stage" id="stage_appointment_waiting">
+        <!-- <record model="medical.appointment.stage" id="stage_appointment_waiting">
             <field name="name">Waiting</field>
             <field name="sequence">30</field>
         </record>
         <record model="medical.appointment.stage" id="stage_appointment_in_consultation">
             <field name="name">In Consultation</field>
             <field name="sequence">35</field>
-        </record>
+        </record> -->
         <record model="medical.appointment.stage" id="stage_appointment_done">
             <field name="name">Done</field>
             <field name="sequence">40</field>
             <field name="fold">True</field>
-            </record>
+        </record>
         <record model="medical.appointment.stage" id="stage_appointment_canceled">
             <field name="name">Canceled</field>
             <field name="sequence">50</field>
             <field name="fold">True</field>
         </record>
-        <record model="medical.appointment.stage" id="stage_unavailable">
-            <field name="name">Unavailable</field>
+        <record model="medical.appointment.stage" id="stage_appointment_absent">
+            <field name="name">Absent</field>
             <field name="sequence">60</field>
             <field name="fold">True</field>
         </record>

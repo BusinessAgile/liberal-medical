@@ -51,8 +51,8 @@
                                         <field name="specialty_id" />
                                     </group>
                                     <group>
-                                        <field name="consultations" />
-                                        <field name='invoice_id' />
+                                        <!-- <field name="consultations" /> -->
+                                        <!-- <field name='invoice_id' /> -->
                                         <field name="appointment_date"/>
                                         <field name="duration" widget="float_time"/>
                                     </group>
@@ -84,7 +84,7 @@
             <field name="model">medical.appointment</field>
             <field eval="2" name="priority"/>
             <field name="arch" type="xml">
-                <calendar color="physician_id" date_start="appointment_date" date_stop="date_end" string="Calendar View" mode="week" >
+                <calendar  color="physician_id" date_start="appointment_date" date_delay="duration" string="Calendar View" mode="week" >
                     <field name="patient_id"/>
                     <field name="physician_id"/>
                     <field name="duration"/>
@@ -104,13 +104,13 @@
                     <field name="appointment_date" />
                     <field name="appointment_type" />
                     <field name="urgency" />
-                    <field name="consultations" />
+                    <!-- <field name="consultations" /> -->
                     <field name="institution_id" />
                     <field name="specialty_id" />
                     <newline />
                     <group expand="0" string="Group By...">
-                        <filter string="Consultation Services" domain="[]"
-                            context="{'group_by':'consultations'}" />
+                        <!-- <filter string="Consultation Services" domain="[]" -->
+                            <!-- context="{'group_by':'consultations'}" /> -->
                         <filter string="Patient" domain="[]" context="{'group_by':'patient_id'}" />
                         <filter string="Appointment ID" domain="[]"
                             context="{'group_by':'name'}" />
