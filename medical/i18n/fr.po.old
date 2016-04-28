@@ -1,4 +1,4 @@
-# Translation of Odoo Medical.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* medical
 # 	* medical_appointment_invoice
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Odoo Medical\n"
 "Report-Msgid-Bugs-To: Business Agile <info@businessagile.eu>\n"
 "POT-Creation-Date: 2016-03-11 15:21+0000\n"
-"PO-Revision-Date: 2016-04-28 16:50+0100\n"
+"PO-Revision-Date: 2016-03-11 17:31+0100\n"
 "Last-Translator: Business Agile <info@businessagile.eu>\n"
 "Language-Team: Business Agile <info@businessagile.eu>\n"
 "MIME-Version: 1.0\n"
@@ -20,38 +20,58 @@ msgstr ""
 
 #. module: medical
 #: model:email.template,body_html:medical.email_template_appointment_confirmation
-msgid "\n"
+msgid ""
+"\n"
 "                <div class=\"content-wrapper\" style=\"max-width:650px;\">\n"
 "                    <div class=\"col-sm-12 highlight\">\n"
 "                        <p> <b>Dear ${object.patient_id.name}</b> </p>\n"
-"                        <p>The following appointment has been created successfully</p>\n"
+"                        <p>The following appointment has been created "
+"successfully</p>\n"
 "                        <div class=\"row\"></div>\n"
 "\n"
 "                        <div class=\"col-sm-8 highlight\">\n"
-"                            <p>Doctor....: <b>${object.physician_id.name}</b></p>\n"
-"                            <p>Date.....: <b>${ctx.get('appointment_date') or object.appointment_date[:10]}</b><img class=\"img-responsive\" style=\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/Banners/calendar.png\"></p>\n"
-"                            <p>Time......: <b>${ctx.get('appointment_time') or object.appointment_date[11:]}</b></p>\n"
-"                            <p>Clinic...: <b>${object.institution_id.name}</b></p>\n"
-"                            <p>Phone..: <b>${object.institution_id.phone}</b></p>\n"
-"                            <p>Address.: <b>${object.institution_id.street} ${object.institution_id.street2}</b></p>\n"
+"                            <p>Doctor....: <b>${object.physician_id.name}</"
+"b></p>\n"
+"                            <p>Date.....: <b>${ctx.get('appointment_date') "
+"or object.appointment_date[:10]}</b><img class=\"img-responsive\" style="
+"\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/"
+"Banners/calendar.png\"></p>\n"
+"                            <p>Time......: <b>${ctx.get('appointment_time') "
+"or object.appointment_date[11:]}</b></p>\n"
+"                            <p>Clinic...: <b>${object.institution_id.name}</"
+"b></p>\n"
+"                            <p>Phone..: <b>${object.institution_id.phone}</"
+"b></p>\n"
+"                            <p>Address.: <b>${object.institution_id.street} "
+"${object.institution_id.street2}</b></p>\n"
 "                        </div>\n"
 "                    </div>\n"
 "                </div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "                <div class=\"content-wrapper\" style=\"max-width:650px;\">\n"
 "                    <div class=\"col-sm-12 highlight\">\n"
 "                        <p> <b>Cher ${object.patient_id.name}</b> </p>\n"
-"                        <p>Le rendez-vous suivant a été créé avec succès</p>\n"
+"                        <p>Le rendez-vous suivant a été créé avec succès</"
+"p>\n"
 "                        <div class=\"row\"></div>\n"
 "\n"
 "                        <div class=\"col-sm-8 highlight\">\n"
-"                            <p>Médecin....: <b>${object.physician_id.name}</b></p>\n"
-"                            <p>Date.....: <b>${ctx.get('appointment_date') or object.appointment_date[:10]}</b><img class=\"img-responsive\" style=\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/Banners/calendar.png\"></p>\n"
-"                            <p>Heure......: <b>${ctx.get('appointment_time') or object.appointment_date[11:]}</b></p>\n"
-"                            <p>Centre...: <b>${object.institution_id.name}</b></p>\n"
-"                            <p>Téléphone..: <b>${object.institution_id.phone}</b></p>\n"
-"                            <p>Adresse.: <b>${object.institution_id.street} ${object.institution_id.street2}</b></p>\n"
+"                            <p>Médecin....: <b>${object.physician_id.name}</"
+"b></p>\n"
+"                            <p>Date.....: <b>${ctx.get('appointment_date') "
+"or object.appointment_date[:10]}</b><img class=\"img-responsive\" style="
+"\"float:right;\" src=\"http://agendese.com/website/static/src/img/Agendese/"
+"Banners/calendar.png\"></p>\n"
+"                            <p>Heure......: <b>${ctx.get('appointment_time') "
+"or object.appointment_date[11:]}</b></p>\n"
+"                            <p>Centre...: <b>${object.institution_id.name}</"
+"b></p>\n"
+"                            <p>Téléphone..: <b>${object.institution_id.phone}"
+"</b></p>\n"
+"                            <p>Adresse.: <b>${object.institution_id.street} "
+"${object.institution_id.street2}</b></p>\n"
 "                        </div>\n"
 "                    </div>\n"
 "                </div>\n"
@@ -59,11 +79,19 @@ msgstr "\n"
 
 #. module: medical
 #: model:email.template,body_html:medical.sms_template_appointment_confirmation
-msgid "\n"
-"<p>Your appointment with Dr. ${object.physician_id.lastname} on ${ctx.get('appointment_date') or object.appointment_date[:10]} ${ctx.get('appointment_time') or object.appointment_date[11:]} has been confirmed.</p>\n"
+msgid ""
+"\n"
+"<p>Your appointment with Dr. ${object.physician_id.lastname} on ${ctx."
+"get('appointment_date') or object.appointment_date[:10]} ${ctx."
+"get('appointment_time') or object.appointment_date[11:]} has been confirmed."
+"</p>\n"
 "            "
-msgstr "\n"
-"<p>Votre rendez-vous avec Dr. ${object.physician_id.lastname} le ${ctx.get('appointment_date') or object.appointment_date[:10]} à ${ctx.get('appointment_time') or object.appointment_date[11:]} a été confirmé.</p>\n"
+msgstr ""
+"\n"
+"<p>Votre rendez-vous avec Dr. ${object.physician_id.lastname} le ${ctx."
+"get('appointment_date') or object.appointment_date[:10]} à ${ctx."
+"get('appointment_time') or object.appointment_date[11:]} a été confirmé.</"
+"p>\n"
 "            "
 
 #. module: medical
@@ -73,7 +101,6 @@ msgid " (deceased)"
 msgstr "(décédé)"
 
 #. module: medical
-#: model:ir.ui.menu,name:medical.medical_appointment_root
 #: model:ir.ui.menu,name:medical.medical_appointment
 msgid " Appointment"
 msgstr " Rendez-vous"
@@ -110,8 +137,12 @@ msgstr "${object.institution_id.name}  -  Confirmation de rendez-vous"
 
 #. module: medical
 #: model:email.template,subject:medical.email_template_appointment_confirmation
-msgid "${object.institution_id.name} <${(object.institution_id.email or user.email)|safe}> - Appointment Confirmation"
-msgstr "${object.institution_id.name} <${(object.institution_id.email or user.email)|safe}> - Confirmation de rendez-vous"
+msgid ""
+"${object.institution_id.name} <${(object.institution_id.email or user.email)|"
+"safe}> - Appointment Confirmation"
+msgstr ""
+"${object.institution_id.name} <${(object.institution_id.email or user.email)|"
+"safe}> - Confirmation de rendez-vous"
 
 #. module: medical
 #: selection:medical.physician.schedule.template,duration:0
@@ -334,9 +365,15 @@ msgid "55"
 msgstr "55"
 
 #. module: medical
+<<<<<<< HEAD:medical/i18n/fr.po
 #: model:medical.appointment.stage,name:medical.stage_appointment_absent
 msgid "Absent"
 msgstr "Pas venu"
+=======
+#: model:medical.appointment.stage,name:medical.stage_unavailable
+msgid "Absent"
+msgstr "Absent"
+>>>>>>> french:medical/i18n/medical_fr.po
 
 #. module: medical
 #: field:medical.appointment.history,action:0
@@ -415,17 +452,11 @@ msgid "Appointment ID"
 msgstr "ID Rendez-vous"
 
 #. module: medical_appointment_invoice
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:223
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:339
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:66
 #, python-format
 msgid "Appointment already invoiced"
 msgstr "Rendez-vous déjà facturé"
-
-#. module: medical_appointment_invoice
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:218
-#, python-format
-msgid "Appointment cannot be created due to an internal error : "
-msgstr "Le rendez-vous n'a pu être créé en raison d'une erreur interne"
 
 #. module: medical_appointment_invoice
 #: model:ir.actions.act_window,name:medical_appointment_invoice.act_medical_patient_2_medical_appointment
@@ -436,7 +467,7 @@ msgstr "Rendez-vous"
 #. module: medical
 #: model:ir.model,name:medical.model_medical_physician_unavailable_wizard
 msgid "Asistente para la definicion de indisponibilidades"
-msgstr ""
+msgstr "Assistant de définition des indisponibilités"
 
 #. module: medical_appointment_invoice
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:71
@@ -460,8 +491,9 @@ msgstr "Barrer le calendrier"
 msgid "By duration"
 msgstr ""
 
-#. module: medical
+#. modules: medical, medical_appointment_invoice
 #: view:medical.appointment:medical.medical_appointment_view_calendar
+#: view:medical.appointment:medical_appointment_invoice.medical_appointment_view_calendar_button
 msgid "Calendar View"
 msgstr "Vue Calendrier"
 
@@ -512,7 +544,9 @@ msgstr "Cocher si le produit est un régime d'assurance"
 
 #. module: medical_appointment_invoice
 #: help:product.product,category:0
-msgid "Check if the product is sold by duration, else the product will be sold by a group of appointments."
+msgid ""
+"Check if the product is sold by duration, else the product will be sold by a "
+"group of appointments."
 msgstr ""
 
 #. module: medical
@@ -556,7 +590,7 @@ msgstr "Configuration"
 #. module: medical
 #: model:medical.appointment.stage,name:medical.stage_appointment_confirm
 msgid "Confirm"
-msgstr "Confirmer"
+msgstr "Confirmé"
 
 #. module: medical_appointment_invoice
 #: field:medical.appointment,consultations:0
@@ -705,7 +739,7 @@ msgstr "Durée :"
 #. module: medical_appointment_invoice
 #: field:medical.appointment,duration_human_readable:0
 msgid "Duree humaine"
-msgstr ""
+msgstr "Duree humaine"
 
 #. module: medical
 #: field:medical.physician.unavailable.wizard,date_end:0
@@ -822,17 +856,14 @@ msgstr "ID"
 #. module: medical
 #: help:medical.appointment.stage,is_default:0
 msgid "If checked, this stage will be selected when creating new appointments."
-msgstr "Si coché, cette étape sera sélectionné à la création de nouveaux rendez-vous"
+msgstr ""
+"Si coché, cette étape sera sélectionné à la création de nouveaux rendez-vous"
 
 #. module: medical
 #: help:medical.physician,active:0
-msgid "If unchecked, it will allow you to hide the physician without removing it."
+msgid ""
+"If unchecked, it will allow you to hide the physician without removing it."
 msgstr "Si décoché, vous pourrez cacher un médecin sans le supprimer"
-
-#. module: medical
-#: model:medical.appointment.stage,name:medical.stage_appointment_in_consultation
-msgid "In Consultation"
-msgstr "En consultation"
 
 #. module: medical
 #: selection:medical.appointment,appointment_type:0
@@ -976,7 +1007,7 @@ msgstr "Responsable du centre médical"
 #. module: medical
 #: model:res.groups,name:medical.group_medical_configurator
 msgid "Medical Configurator"
-msgstr "Configurateur Medical"
+msgstr "Configurateur Médical"
 
 #. module: medical
 #: model:res.groups,name:medical.group_medical_doctor
@@ -1101,7 +1132,7 @@ msgid "d"
 msgstr "jours"
 
 #. module: medical_appointment_invoice
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:191
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:294
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:121
 #, python-format
 msgid "No consultation service is connected with the selected appointments"
@@ -1165,8 +1196,12 @@ msgstr "Identifiant du patient"
 
 #. module: medical
 #: help:medical.patient,identification_code:0
-msgid "Patient Identifier provided by the Health Center.(different from the Social Security Number)"
-msgstr "Identifiant du patient défini par le centre de santé (différent du numéro de Sécurité Sociale)"
+msgid ""
+"Patient Identifier provided by the Health Center.(different from the Social "
+"Security Number)"
+msgstr ""
+"Identifiant du patient défini par le centre de santé (différent du numéro de "
+"Sécurité Sociale)"
 
 #. module: medical
 #: help:medical.appointment,patient_id:0
@@ -1177,11 +1212,6 @@ msgstr "Nom du patient"
 #: view:medical.appointment:medical.medical_appointment_view_kanban
 msgid "Patient:"
 msgstr "Patient :"
-
-#. module: medical
-#: model:medical.appointment.stage,name:medical.stage_appointment_in_review
-msgid "Pending Review"
-msgstr "En attente d'un examen"
 
 #. module: medical
 #: field:res.partner,is_person:0
@@ -1260,7 +1290,7 @@ msgstr "Patients liés"
 #. module: medical
 #: field:medical.physician.services,product_id:0
 msgid "Related Product"
-msgstr "Produit lié"
+msgstr "Article lié"
 
 #. module: medical
 #: field:medical.physician,schedule_template_ids:0
@@ -1295,7 +1325,7 @@ msgstr "Samedi"
 #. module: medical
 #: field:res.partner,is_school:0
 msgid "School"
-msgstr "Ecole"
+msgstr "École"
 
 #. module: medical
 #: selection:medical.patient,marital_status:0
@@ -1336,7 +1366,7 @@ msgstr "Code de spécialité"
 #. module: medical
 #: field:medical.appointment,stage_id:0
 msgid "Stage"
-msgstr "Etape"
+msgstr "Étape"
 
 #. module: medical
 #: field:medical.appointment.stage,name:0
@@ -1378,7 +1408,7 @@ msgstr "Dimanche"
 #. module: medical
 #: view:medical.patient:medical.medical_patient_view_form
 msgid "Tags..."
-msgstr "Etiquettes"
+msgstr "Étiquettes"
 
 #. module: medical_appointment_invoice
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:56
@@ -1421,11 +1451,6 @@ msgid "Type"
 msgstr "Type"
 
 #. module: medical
-#: model:medical.appointment.stage,name:medical.stage_unavailable
-msgid "Unavailable"
-msgstr "Indisponible"
-
-#. module: medical
 #: field:medical.appointment,urgency:0
 msgid "Urgency Level"
 msgstr "Niveau d'urgence"
@@ -1446,9 +1471,9 @@ msgid "User"
 msgstr "Utilisateur"
 
 #. module: medical_appointment_invoice
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:190
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:217
-#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:222
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:293
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:333
+#: code:addons/medical_appointment_invoice/models/appointment_invoice.py:338
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:55
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:61
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:65
@@ -1471,11 +1496,6 @@ msgid "Validity Date"
 msgstr "Date de péremption"
 
 #. module: medical
-#: model:medical.appointment.stage,name:medical.stage_appointment_waiting
-msgid "Waiting"
-msgstr "En attente"
-
-#. module: medical
 #: selection:medical.physician.schedule.template,day:0
 msgid "Wednesday"
 msgstr "Mercredi"
@@ -1484,7 +1504,9 @@ msgstr "Mercredi"
 #: code:addons/medical_appointment_invoice/models/wizard_appointment_invoice.py:152
 #, python-format
 msgid "When multiple appointments are selected, patient must be the same"
-msgstr "Vous ne pouvez sélectionner plusieurs rendez-vous que s'ils sont liés à un même patient"
+msgstr ""
+"Vous ne pouvez sélectionner plusieurs rendez-vous que s'ils sont liés à un "
+"même patient"
 
 #. module: medical
 #: selection:medical.patient,marital_status:0
@@ -1507,11 +1529,6 @@ msgstr "Vous ne pouvez pas facturer ce rendez-vous"
 #: view:medical.physician:medical.medical_physician_view_form
 msgid "ZIP"
 msgstr "CP"
-
-#. module: medical_appointment_invoice
-#: view:medical.appointment:medical_appointment_invoice.medical_appointment_view_form_onchange
-msgid "['|', ('patient_id', '=', active_id)]"
-msgstr "['|', ('patient_id', '=', active_id)]"
 
 #. module: medical
 #: view:medical.physician.unavailable.wizard:medical.medical_physician_unavailable_wizard_form
@@ -1546,7 +1563,7 @@ msgstr "par ex. +33.1.23.45.67.89"
 #. module: medical
 #: view:medical.patient:medical.medical_patient_view_form
 msgid "e.g. www.openerp.com"
-msgstr "par ex. http://businessagile.eu"
+msgstr "par ex. businessagile.eu"
 
 #. module: medical_appointment_invoice
 #: field:medical.patient,invoice_count:0
@@ -1559,6 +1576,6 @@ msgid "law marriage"
 msgstr "Pacsé(e)"
 
 #. module: medical_appointment_invoice
-#: view:medical.appointment:medical_appointment_invoice.medical_appointment_view_form_onchange
-msgid "{'patient_id': [active_id]}"
-msgstr "{'patient_id': [active_id]}"
+#: field:medical.appointment.cluster,appointment_ids:0
+msgid "unknown"
+msgstr "unknown"
